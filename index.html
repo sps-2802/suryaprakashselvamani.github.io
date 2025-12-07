@@ -1,1216 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Surya Prakash | Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
-  <!-- AOS Animations -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="assets/img/IMG_4269.JPG" type="image/x-icon">
-
-  <!-- Custom Styles -->
-  <style>
-    :root {
-      --primary: #5b8def;
-      --primary-soft: rgba(91, 141, 239, 0.2);
-      --accent: #f97316;
-      --bg-dark: #050816;
-      --bg-card: rgba(15, 23, 42, 0.8);
-      --border-soft: rgba(148, 163, 184, 0.2);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --radius-xl: 24px;
-      --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.7);
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background:
-        radial-gradient(circle at 10% 20%, rgba(91, 141, 239, 0.25) 0, transparent 55%),
-        radial-gradient(circle at 90% 0, rgba(244, 114, 182, 0.22) 0, transparent 55%),
-        radial-gradient(circle at 0 100%, rgba(34, 197, 94, 0.18) 0, transparent 55%),
-        #020617;
-      min-height: 100vh;
-    }
-
-    /* Navbar */
-    .navbar {
-      padding: 0.8rem 1.2rem;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.8));
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .navbar-brand {
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: #e5e7eb !important;
-    }
-
-    .navbar-brand span {
-      color: var(--primary);
-    }
-
-    .nav-link {
-      color: var(--text-muted) !important;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-left: 1rem;
-      position: relative;
-      padding-bottom: 0.2rem;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      transition: width 0.25s ease-out;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active-link::after {
-      width: 100%;
-    }
-
-    /* Hero */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 80px;
-      padding-bottom: 80px;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      width: 100%;
-      padding: 3rem 2.2rem;
-      border-radius: 32px;
-      background: radial-gradient(circle at top left, rgba(148, 163, 253, 0.18), transparent 55%),
-      radial-gradient(circle at bottom right, rgba(45, 212, 191, 0.14), transparent 55%),
-      rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      box-shadow: var(--shadow-soft);
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 3rem;
-      align-items: center;
-    }
-
-    @media (max-width: 992px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 2.5rem 1.8rem;
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .hero-badge i {
-      color: var(--primary);
-      font-size: 0.9rem;
-    }
-
-    .hero-heading {
-      font-size: clamp(2.2rem, 3vw, 2.8rem);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-heading span {
-      background: linear-gradient(90deg, #60a5fa, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 1.05rem;
-      margin-bottom: 1.2rem;
-      color: var(--text-muted);
-    }
-
-    .typed-wrapper {
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: #c4b5fd;
-    }
-
-    .typed-cursor {
-      color: #c4b5fd;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.6rem;
-    }
-
-    .btn-primary-gradient {
-      border-radius: 999px;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background-image: linear-gradient(135deg, #4f46e5, #6366f1, #ec4899);
-      color: white;
-      box-shadow: 0 14px 30px rgba(79, 70, 229, 0.6);
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-    }
-
-    .btn-primary-gradient:hover {
-      transform: translateY(-1px) translateZ(0);
-      box-shadow: 0 20px 45px rgba(79, 70, 229, 0.7);
-      color: white;
-    }
-
-    .btn-ghost {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 0.7rem 1.25rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-main);
-      transition: background 0.2s ease-out, border-color 0.2s ease-out, transform 0.15s ease-out;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--primary);
-      background: rgba(15, 23, 42, 1);
-      transform: translateY(-1px) translateZ(0);
-      color: white;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.6rem;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-    }
-
-    .hero-meta-block span:first-child {
-      color: var(--text-main);
-      font-weight: 500;
-      font-size: 0.85rem;
-    }
-
-    .hero-avatar-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-avatar-orbit {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      animation: orbit-spin 16s linear infinite;
-    }
-
-    .hero-avatar-orbit::before,
-    .hero-avatar-orbit::after {
-      content: "";
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #38bdf8, #a855f7);
-      top: -7px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
-    }
-
-    .hero-avatar-orbit::after {
-      top: auto;
-      bottom: -7px;
-      background: linear-gradient(135deg, #22c55e, #f97316);
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.9);
-    }
-
-    @keyframes orbit-spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .hero-avatar-card {
-      position: relative;
-      width: 220px;
-      height: 220px;
-      border-radius: 999px;
-      padding: 6px;
-      background: radial-gradient(circle at top, rgba(129, 140, 248, 0.5), rgba(15, 23, 42, 1));
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
-      transform: translateY(0);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    .hero-avatar-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: inherit;
-      border: 3px solid rgba(148, 163, 184, 0.7);
-    }
-
-    .hero-avatar-tag {
-      position: absolute;
-      bottom: 12px;
-      right: -5px;
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 999px;
-      padding: 0.3rem 0.7rem;
-      font-size: 0.7rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: #e5e7eb;
-    }
-
-    .hero-avatar-tag i {
-      color: #22c55e;
-      font-size: 0.8rem;
-    }
-
-    /* Sections */
-    main {
-      padding-bottom: 80px;
-    }
-
-    section {
-      padding: 70px 0;
-    }
-
-    .section-title {
-      margin-bottom: 2.2rem;
-      text-align: left;
-    }
-
-    .section-title h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .section-title p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 500px;
-    }
-
-    .pill-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.15rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 0.7rem;
-    }
-
-    .pill-label i {
-      color: var(--primary);
-      font-size: 0.8rem;
-    }
-
-    .glass-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      padding: 1.5rem 1.7rem;
-    }
-
-    /* About */
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-    }
-
-    @media (max-width: 992px) {
-      #about .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .about-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .about-highlight {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .about-facts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0.9rem;
-      margin-top: 1.2rem;
-    }
-
-    .fact-pill {
-      padding: 0.7rem 0.8rem;
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.85);
-      font-size: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .fact-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-    }
-
-    .fact-value {
-      font-size: 0.9rem;
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .about-table {
-      font-size: 0.85rem;
-      width: 100%;
-    }
-
-    .about-table tr td:first-child {
-      color: var(--text-muted);
-      padding-right: 0.8rem;
-      padding-bottom: 0.35rem;
-      white-space: nowrap;
-    }
-
-    .about-table tr td:last-child {
-      color: #e5e7eb;
-      padding-bottom: 0.35rem;
-    }
-
-    /* Skills */
-    #skills .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.15rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .skill-badge i {
-      color: #22c55e;
-    }
-
-    .skill-item {
-      margin-bottom: 1rem;
-    }
-
-    .skill-item span {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      margin-bottom: 0.3rem;
-      color: var(--text-main);
-    }
-
-    .skill-bar {
-      width: 100%;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(30, 64, 175, 0.35);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .skill-bar-inner {
-      height: 100%;
-      border-radius: inherit;
-      background-image: linear-gradient(90deg, #4f46e5, #22c55e);
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 0.8s ease-out;
-    }
-
-    .skill-bar-inner.visible {
-      transform: scaleX(1);
-    }
-
-    /* Chips for categories */
-    .skill-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.7rem;
-      font-size: 0.75rem;
-    }
-
-    .skill-chip {
-      padding: 0.25rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      color: #e5e7eb;
-    }
-
-    /* Certifications & Projects */
-    .bullets {
-      padding-left: 1.1rem;
-      margin: 0;
-      list-style: none;
-    }
-
-    .bullets li {
-      position: relative;
-      padding-left: 1.2rem;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .bullets li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.5rem;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background-image: linear-gradient(135deg, #4f46e5, #ec4899);
-      box-shadow: 0 0 12px rgba(129, 140, 248, 0.8);
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .list-card {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.42);
-      padding: 1rem 1.2rem;
-      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s ease-out, background 0.16s ease-out;
-      cursor: default;
-    }
-
-    .list-card:hover {
-      transform: translateY(-3px) translateZ(0);
-      background: rgba(15, 23, 42, 1);
-      border-color: rgba(129, 140, 248, 0.9);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
-    }
-
-    .list-card-title {
-      font-size: 0.92rem;
-      font-weight: 500;
-      margin-bottom: 0.2rem;
-      color: #e5e7eb;
-    }
-
-    .list-card-body {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .list-card-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .list-card-tag i {
-      font-size: 0.75rem;
-      color: var(--primary);
-    }
-
-    /* Contact / Footer */
-    #contact {
-      padding-bottom: 40px;
-    }
-
-    .contact-card {
-      text-align: center;
-      padding: 1.8rem 1.8rem 1.3rem;
-    }
-
-    .contact-card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .contact-subtext {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.3rem;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-links a {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-main);
-      transition: transform 0.16s ease-out, background 0.16s ease-out, border-color 0.16s ease-out, box-shadow 0.16s ease-out;
-    }
-
-    .contact-links a:hover {
-      transform: translateY(-2px) translateZ(0);
-      background: rgba(79, 70, 229, 0.9);
-      border-color: transparent;
-      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.7);
-      color: white;
-    }
-
-    .copyright {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 0.3rem;
-    }
-
-    .copyright span {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    /* Back to top */
-    .back-to-top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e5e7eb;
-      text-decoration: none;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s ease-out;
-      z-index: 1000;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .back-to-top i {
-      font-size: 1.2rem;
-    }
-
-    /* Small tweaks */
-    @media (max-width: 576px) {
-      .hero-inner {
-        padding: 2rem 1.4rem;
-      }
-
-      section {
-        padding: 55px 0;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <span>Surya</span> Prakash
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span><i class="fas fa-bars"></i></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link active-link" href="#hero">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section id="hero">
-    <div class="container">
-      <div class="hero-inner" data-aos="fade-up">
-        <div>
-          <div class="hero-badge">
-            <i class="fas fa-bolt"></i> AWS Engineer · Python Developer
-          </div>
-          <h1 class="hero-heading">
-            Hi, I'm <span>Surya Prakash</span>
-          </h1>
-          <p class="hero-subtitle">
-            Python Developer with <span class="about-highlight">3.9 years</span> of experience building scalable
-            backends, APIs, and cloud-native solutions on AWS.
-          </p>
-          <div class="typed-wrapper">
-            I’m <span class="typed" data-typed-items="an AWS Engineer,a Python Programmer,a Creative Designer,a Travel Lover,a Food Buff"></span>
-          </div>
-
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary-gradient">
-              <i class="fas fa-folder-open"></i> View Projects
-            </a>
-            <a href="#contact" class="btn btn-ghost">
-              <i class="fas fa-paper-plane"></i> Contact Me
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="hero-meta-block">
-              <span>Primary Stack</span><br>
-              <span>Python · FastAPI · AWS · SQL</span>
-            </div>
-            <div class="hero-meta-block">
-              <span>Location</span><br>
-              <span>Kumbakonam, India</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-avatar-wrap" data-aos="zoom-in" data-aos-delay="150">
-          <div class="hero-avatar-orbit"></div>
-          <div class="hero-avatar-card">
-            <img src="assets/img/surya.jpeg" alt="Surya Prakash">
-            <div class="hero-avatar-tag">
-              <i class="fas fa-circle-check"></i>
-              Open to Opportunities
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main id="main">
-
-    <!-- About -->
-    <section id="about">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Surya Prakash | Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animations -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/IMG_4269.JPG" type="image/x-icon" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
-        <div class="section-title">
-          <div class="pill-label">
-            <i class="fas fa-user"></i> About
-          </div>
-          <h2>Who I Am</h2>
-          <p>
-            A problem-solver focused on building clean, reliable backends and cloud solutions.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div>
-            <div class="glass-card" data-aos="fade-right">
-              <p class="about-text">
-                I’m a <span class="about-highlight">Python Developer</span> with <span class="about-highlight">3.9 years</span> of
-                experience working on backend services, automation, and cloud infrastructure.
-                I work primarily with <span class="about-highlight">Python, FastAPI, PostgreSQL, MySQL, Snowflake, and AWS</span>.
-                I enjoy converting business use cases into robust, scalable solutions.
-              </p>
-              <p class="about-text mt-3">
-                I love collaborating with teams, breaking down complex problems, and continuously learning new tools and
-                patterns to refine my craft.
-              </p>
-
-              <div class="about-facts">
-                <div class="fact-pill">
-                  <span class="fact-label">Experience</span>
-                  <span class="fact-value">3.9+ Years</span>
-                </div>
-                <div class="fact-pill">
-                  <span class="fact-label">Role</span>
-                  <span class="fact-value">AWS & Python Engineer</span>
-                </div>
-                <div class="fact-pill">
-                  <span class="fact-label">Email</span>
-                  <span class="fact-value">suryaprakashselvamani@gmail.com</span>
-                </div>
-                <div class="fact-pill">
-                  <span class="fact-label">City</span>
-                  <span class="fact-value">Kumbakonam</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="glass-card" data-aos="fade-left" data-aos-delay="150">
-              <table class="about-table">
-                <tr>
-                  <td>Birthday</td>
-                  <td>28 Feb 2000</td>
-                </tr>
-                <tr>
-                  <td>Age</td>
-                  <td>25</td>
-                </tr>
-                <tr>
-                  <td>Degree</td>
-                  <td>B.Tech, Information Technology</td>
-                </tr>
-                <tr>
-                  <td>Primary Email</td>
-                  <td>suryaprakashselvamani@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>Cloud Focus</td>
-                  <td>AWS (Serverless, IAM, EC2, S3, etc.)</td>
-                </tr>
-                <tr>
-                  <td>Interests</td>
-                  <td>System Design, Automation, Travel & Food</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-title">
-          <div class="pill-label">
-            <i class="fas fa-code"></i> Skills
-          </div>
-          <h2>Tech Stack & Tools</h2>
-          <p>
-            A mix of backend development, cloud, databases, and creative tools.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-          <div class="glass-card" data-aos="fade-up">
-            <div class="skill-badge">
-              <i class="fas fa-server"></i> Backend & Cloud
-            </div>
-
-            <div class="skill-item">
-              <span><span>AWS</span><span>80%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="80"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>Python</span><span>85%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="85"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>Snowflake</span><span>90%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="90"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>MySQL & PL/SQL</span><span>85%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="85"></div>
-              </div>
-            </div>
-
-            <div class="skill-chips">
-              <span class="skill-chip">FastAPI</span>
-              <span class="skill-chip">REST APIs</span>
-              <span class="skill-chip">Data Pipelines</span>
-              <span class="skill-chip">Linux</span>
-            </div>
-          </div>
-
-          <div class="glass-card" data-aos="fade-up" data-aos-delay="120">
-            <div class="skill-badge">
-              <i class="fas fa-laptop-code"></i> Programming & UI
-            </div>
-
-            <div class="skill-item">
-              <span><span>Java</span><span>65%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="65"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>HTML</span><span>55%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="55"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>CSS</span><span>55%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="55"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>JavaScript</span><span>45%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="45"></div>
-              </div>
-            </div>
-
-            <div class="skill-chips">
-              <span class="skill-chip">Responsive UI</span>
-              <span class="skill-chip">Bootstrap</span>
-              <span class="skill-chip">Form Handling</span>
-            </div>
-          </div>
-
-          <div class="glass-card" data-aos="fade-up" data-aos-delay="220">
-            <div class="skill-badge">
-              <i class="fas fa-palette"></i> Creative Tools
-            </div>
-
-            <div class="skill-item">
-              <span><span>Photoshop</span><span>85%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="85"></div>
-              </div>
-            </div>
-
-            <div class="skill-item">
-              <span><span>After Effects</span><span>45%</span></span>
-              <div class="skill-bar">
-                <div class="skill-bar-inner" data-skill="45"></div>
-              </div>
-            </div>
-
-            <div class="skill-chips">
-              <span class="skill-chip">Thumbnails</span>
-              <span class="skill-chip">Motion Graphics</span>
-              <span class="skill-chip">Visual Design</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="Certifications">
-      <div class="container">
-        <div class="section-title">
-          <div class="pill-label">
-            <i class="fas fa-certificate"></i> Certifications
-          </div>
-          <h2>What I’ve Completed</h2>
-          <p>
-            Courses and certifications that strengthened my cloud and data foundation.
-          </p>
-        </div>
-
-        <div class="glass-card" data-aos="fade-right">
-          <ul class="bullets">
-            <li>AWS Certified Solutions Architect – Associate</li>
-            <li>NPTEL – Introduction to Internet of Things</li>
-            <li>Coursera – Introduction to Big Data</li>
-            <li>Coursera – Machine Learning Foundations</li>
-            <li>Coursera – The Data Scientist's Toolbox</li>
+        <a class="navbar-brand" href="#hero"> <span>Surya</span> Prakash </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span><i class="fas fa-bars"></i></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active-link" href="#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
           </ul>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <!-- Projects -->
-    <section id="projects">
+    <!-- ================= HERO ================= -->
+    <section id="hero">
       <div class="container">
-        <div class="section-title">
-          <div class="pill-label">
-            <i class="fas fa-diagram-project"></i> Projects
-          </div>
-          <h2>Things I’ve Built</h2>
-          <p>
-            A mix of web apps, automation and systems focused on usability and reliability.
-          </p>
-        </div>
+        <div class="hero-inner" data-aos="fade-up">
+          <!-- Left -->
+          <div>
+            <div class="hero-badge">
+              <i class="fas fa-bolt"></i>Python Developer
+            </div>
+            <h1 class="hero-heading">Hi, I'm <span>Surya Prakash</span></h1>
+            <div class="typed-wrapper">
+              I’m
+              <span
+                class="typed"
+                data-typed-items="an AWS Engineer,a Python Programmer,a Creative Designer,a Travel Lover,a Food Buff"
+              ></span>
+            </div>
 
-        <div class="cards-grid">
-          <div class="list-card" data-aos="fade-up">
-            <div class="list-card-tag">
-              <i class="fas fa-cloud-sun"></i> Web App
+            <div class="hero-buttons">
+              <a
+                href="assets/resume/Surya_Prakash_S_Resume.pdf"
+                download
+                class="btn btn-primary-gradient"
+              >
+                <i class="fas fa-download"></i> Download Resume
+              </a>
+              <a href="#contact" class="btn btn-ghost">
+                <i class="fas fa-paper-plane"></i> Contact Me
+              </a>
             </div>
-            <div class="list-card-title">Weather App</div>
-            <div class="list-card-body">
-              Built a web app that displays live weather data for a given location using the OpenWeatherMap API.
-              Focused on clean UI, API integration, and error handling.
+
+            <div class="hero-meta">
+              <div class="hero-meta-block">
+                <span>Primary Stack</span><br />
+                <span>Python · FastAPI · ReactJS · AWS </span>
+              </div>
+              <div class="hero-meta-block">
+                <span>Location</span><br />
+                <span>Kumbakonam, India</span>
+              </div>
             </div>
           </div>
 
-          <div class="list-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="list-card-tag">
-              <i class="fas fa-images"></i> Automation
-            </div>
-            <div class="list-card-title">Image Dataset Generator</div>
-            <div class="list-card-body">
-              Developed a web scraper to automatically download images from multiple websites and organize them into
-              custom datasets for ML experiments.
-            </div>
-          </div>
-
-          <div class="list-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="list-card-tag">
-              <i class="fas fa-boxes-stacked"></i> System
-            </div>
-            <div class="list-card-title">Stock Maintenance System</div>
-            <div class="list-card-body">
-              Implemented a stock management system with features like adding, updating, tagging, and removing stocks.
-              Designed for clear workflows and easy tracking inside organizations.
+          <!-- Right -->
+          <div class="hero-avatar-wrap" data-aos="zoom-in" data-aos-delay="150">
+            <div class="hero-avatar-orbit"></div>
+            <div class="hero-avatar-card">
+              <img src="assets/img/surya1.JPG" alt="Surya Prakash" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <div class="glass-card contact-card" data-aos="zoom-in">
-          <h2>Let’s Connect</h2>
-          <p class="contact-subtext">
-            Whether it’s a project, collaboration, or just a quick tech chat — feel free to reach out.
-          </p>
-          <div class="contact-links">
-            <a href="https://github.com/sps-2802" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/suryaprakashselvamani/" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:suryaprakashs.cloud@gmail.com" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
+    <main id="main">
+      <!-- ================= ABOUT ================= -->
+      <section id="about">
+        <div class="container">
+          <div class="section-title">
+            <div class="pill-label"><i class="fas fa-user"></i> About</div>
+            <h2>Who I Am</h2>
+            <p>
+              A problem-solver focused on building clean, reliable backends and
+              cloud solutions.
+            </p>
           </div>
-          <div class="copyright">
-            &copy; <span>Surya Prakash</span> · All rights reserved
+
+          <div class="about-grid">
+            <!-- About text -->
+            <div>
+              <div class="glass-card" data-aos="fade-right">
+                <p class="about-text">
+                  I’m a
+                  <span class="about-highlight">Python Developer</span> with
+                  <span class="about-highlight" id="expYearsAbout"></span> of
+                  experience working on backend services, automation, and cloud
+                  infrastructure. I work primarily with
+                  <span class="about-highlight"
+                    >Python, FastAPI, PostgreSQL, MySQL, Snowflake, and
+                    AWS</span
+                  >. I enjoy converting business use cases into robust, scalable
+                  solutions.
+                </p>
+                <p class="about-text mt-3">
+                  I love collaborating with teams, breaking down complex
+                  problems, and continuously learning new tools and patterns to
+                  refine my craft.
+                </p>
+              </div>
+            </div>
+
+            <!-- About table -->
+            <div>
+              <div class="glass-card" data-aos="fade-left" data-aos-delay="150">
+                <table class="about-table">
+                  <tr>
+                    <td>Birthday</td>
+                    <td>28 Feb 2000</td>
+                  </tr>
+                  <tr>
+                    <td>Age</td>
+                    <td>25</td>
+                  </tr>
+                  <tr>
+                    <td>Degree</td>
+                    <td>B.Tech, Information Technology</td>
+                  </tr>
+                  <tr>
+                    <td>Primary Email</td>
+                    <td class="text-break">suryaprakashselvamani@gmail.com</td>
+                  </tr>
+                  <tr>
+                    <td>Cloud Focus</td>
+                    <td>AWS (Serverless, IAM, EC2, S3, etc.)</td>
+                  </tr>
+                  <tr>
+                    <td>Interests</td>
+                    <td>System Design, Automation, Travel & Food</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- Back to top -->
-  <a href="#hero" class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+      <!-- ================= SKILLS ================= -->
+      <section id="skills">
+        <div class="container">
+          <div class="pill-label"><i class="fas fa-code"></i> Skills</div>
 
-  <!-- JS: Bootstrap, AOS, Typed, Custom -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+          <div class="skills-grid">
+            <!-- Backend & Cloud -->
+            <div class="glass-card" data-aos="fade-up">
+              <div class="skill-badge">
+                <i class="fas fa-server"></i> Backend & Cloud
+              </div>
 
-  <script>
-    // Init AOS
-    AOS.init({
-      duration: 700,
-      easing: "ease-out",
-      once: true,
-      offset: 80
-    });
+              <div class="skill-item">
+                <span><span>Python</span><span>85%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="85"></div>
+                </div>
+              </div>
 
-    // Typed.js
-    document.addEventListener("DOMContentLoaded", function () {
-      const typedElement = document.querySelector(".typed");
-      if (typedElement) {
-        const items = typedElement.getAttribute("data-typed-items");
-        if (items) {
-          new Typed(".typed", {
-            strings: items.split(","),
-            typeSpeed: 70,
-            backSpeed: 35,
-            backDelay: 1500,
-            loop: true
-          });
-        }
-      }
-    });
+              <div class="skill-item">
+                <span><span>FastAPI</span><span>80%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="80"></div>
+                </div>
+              </div>
 
-    // Back to top visibility
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
-      }
-    });
+              <div class="skill-item">
+                <span><span>MySQL & PL/SQL</span><span>85%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="85"></div>
+                </div>
+              </div>
 
-    // Smooth scroll for nav links (Bootstrap already helps but this is extra)
-    document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
-      link.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href");
-        if (targetId.length > 1) {
-          e.preventDefault();
-          const el = document.querySelector(targetId);
-          if (el) {
-            const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        }
-      });
-    });
+              <div class="skill-item">
+                <span><span>AWS</span><span>70%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="70"></div>
+                </div>
+              </div>
+            </div>
 
-    // Animate skill bars when visible
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const value = bar.getAttribute("data-skill") || "0";
-          bar.style.transformOrigin = "left";
-          bar.style.transform = "scaleX(" + (value / 100) + ")";
-          bar.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.4
-    });
+            <!-- Programming & UI -->
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="120">
+              <div class="skill-badge">
+                <i class="fas fa-laptop-code"></i> Frontend
+              </div>
 
-    document.querySelectorAll(".skill-bar-inner").forEach(bar => observer.observe(bar));
-  </script>
-</body>
+              <div class="skill-item">
+                <span><span>HTML</span><span>55%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="55"></div>
+                </div>
+              </div>
 
+              <div class="skill-item">
+                <span><span>CSS</span><span>50%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="50"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span><span>JavaScript</span><span>50%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="50"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span><span>ReactJS</span><span>50%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="50"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Creative -->
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="220">
+              <div class="skill-badge">
+                <i class="fas fa-palette"></i> Creative Tools
+              </div>
+
+              <div class="skill-item">
+                <span><span>Photoshop</span><span>85%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="85"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <span><span>After Effects</span><span>45%</span></span>
+                <div class="skill-bar">
+                  <div class="skill-bar-inner" data-skill="45"></div>
+                </div>
+              </div>
+
+              <div class="skill-chips">
+                <span class="skill-chip">Thumbnails</span>
+                <span class="skill-chip">Motion Graphics</span>
+                <span class="skill-chip">Visual Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CERTIFICATIONS ================= -->
+      <section id="certifications">
+        <div class="container">
+          <div class="section-title">
+            <div class="pill-label">
+              <i class="fas fa-certificate"></i> Certifications
+            </div>
+            <h2>What I’ve Completed</h2>
+            <p>
+              Courses and certifications that strengthened my cloud and data
+              foundation.
+            </p>
+          </div>
+
+          <div class="glass-card" data-aos="fade-right">
+            <ul class="bullets">
+              <li>AWS Certified Solutions Architect – Associate</li>
+              <li>NPTEL – Introduction to Internet of Things</li>
+              <li>Coursera – Introduction to Big Data</li>
+              <li>Coursera – Machine Learning Foundations</li>
+              <li>Coursera – The Data Scientist's Toolbox</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects">
+        <div class="container">
+          <div class="section-title">
+            <div class="pill-label">
+              <i class="fas fa-diagram-project"></i> Projects
+            </div>
+            <h2>Things I’ve Built</h2>
+            <p>
+              A mix of web apps, automation and systems focused on usability and
+              reliability.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <div class="list-card" data-aos="fade-up">
+              <div class="list-card-tag">
+                <i class="fas fa-cloud-sun"></i> Web App
+              </div>
+              <div class="list-card-title">Weather App</div>
+              <div class="list-card-body">
+                Built a web app that displays live weather data for a given
+                location using the OpenWeatherMap API. Focused on clean UI, API
+                integration, and error handling.
+              </div>
+            </div>
+
+            <div class="list-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="list-card-tag">
+                <i class="fas fa-images"></i> Automation
+              </div>
+              <div class="list-card-title">Image Dataset Generator</div>
+              <div class="list-card-body">
+                Developed a web scraper to automatically download images from
+                multiple websites and organize them into custom datasets for ML
+                experiments.
+              </div>
+            </div>
+
+            <div class="list-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="list-card-tag">
+                <i class="fas fa-boxes-stacked"></i> System
+              </div>
+              <div class="list-card-title">Stock Maintenance System</div>
+              <div class="list-card-body">
+                Implemented a stock management system with features like adding,
+                updating, tagging, and removing stocks. Designed for clear
+                workflows and easy tracking inside organizations.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact">
+        <div class="container">
+          <div class="glass-card contact-card" data-aos="zoom-in">
+            <h2>Let’s Connect</h2>
+            <p class="contact-subtext">
+              Whether it’s a project, collaboration, or just a quick tech chat —
+              feel free to reach out.
+            </p>
+            <div class="contact-links">
+              <a
+                href="https://github.com/sps-2802"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/suryaprakashselvamani/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:suryaprakashs.cloud@gmail.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+            <div class="copyright">
+              &copy; <span>Surya Prakash</span> · All rights reserved
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Back to top -->
+    <a href="#hero" class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- Auto-calc experience from Aug 2021 -->
+    <script>
+      (function () {
+        // Months are 0-indexed: 7 = August
+        const careerStart = new Date(2021, 7, 1);
+        const now = new Date();
+        const diffMs = now - careerStart;
+        const diffYears = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+
+        const oneDecimal = Math.floor(diffYears * 10) / 10; // e.g. 4.3
+
+        const yearsText = oneDecimal.toFixed(1) + " years";
+        const yearsPlusText = oneDecimal.toFixed(1) + "+ Years";
+
+        const hero = document.getElementById("expYearsHero");
+        const about = document.getElementById("expYearsAbout");
+        const badge = document.getElementById("expYearsBadge");
+
+        if (hero) hero.textContent = yearsText;
+        if (about) about.textContent = yearsText;
+        if (badge) badge.textContent = yearsPlusText;
+      })();
+    </script>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
